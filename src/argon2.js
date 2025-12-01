@@ -101,13 +101,20 @@ class Argon2KDF {
   }
 
   async _compressionPhase(input, salt, memoryCost, parallelism) {
-    return scryptAsync(input, salt, input.length, {
-      N: memoryCost,
-      r: 8,
-      p: parallelism,
-      maxmem: memoryCost * 3
-    });
-  }
+  // Scrypt CANNOT use full memoryCost as N, so clamp it safely.
+  const safeN = Math.pow(2, 14); // 16384 → standard safe level
+  
+  // Keep parallelism low; scrypt cannot handle high parallel p-values
+  const safeP = Math.min(parallelism, 2);
+
+  return scryptAsync(input, salt, input.length, {
+    N: safeN,
+    r: 8,
+    p: safeP,
+    maxmem: 128 * 1024 * 1024 // 128MB global limit
+  });
+}
+
 
   async _finalDerivation(input, salt, keyLength) {
     return scryptAsync(input, salt, keyLength, {
