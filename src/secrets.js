@@ -4,7 +4,7 @@
  */
 
 import config from './config.js';
-import { timingSafeEqual } from './timing.js';
+import timingSafeEqual from './timing.js';
 
 class SecretManager {
   constructor() {
