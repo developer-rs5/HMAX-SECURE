@@ -3,9 +3,9 @@
   "version": "1.0.1",
   "description": "Enterprise-grade military-level password hashing system",
   "type": "module",
-  "main": "index.js",
+  "main": "src/index.js",
   "exports": {
-    ".": "./index.js",
+    ".": "./src/index.js",
     "./cli": "./cli/hmax.js"
   },
   "bin": {
