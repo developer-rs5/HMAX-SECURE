@@ -1,6 +1,6 @@
 {
   "name": "hmax-secure",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Enterprise-grade military-level password hashing system",
   "type": "module",
   "main": "src/index.js",
