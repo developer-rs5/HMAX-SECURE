@@ -231,21 +231,19 @@ class HMaxSecure {
 // Create singleton instance
 const hmax = new HMaxSecure();
 
-// Public API
-export const {
-  initialize,
-  createHash,
-  createHashSync,
-  verifyPassword,
-  verifyPasswordSync,
-  extractMetadata,
-  migrateHashIfOutdated,
-  generateSecret,
-  generatePepper,
-  rotateSecret,
-  auditHash,
-  getInfo
-} = hmax;
+export const initialize = hmax.initialize.bind(hmax);
+export const createHash = hmax.createHash.bind(hmax);
+export const createHashSync = hmax.createHashSync.bind(hmax);
+export const verifyPassword = hmax.verifyPassword.bind(hmax);
+export const verifyPasswordSync = hmax.verifyPasswordSync.bind(hmax);
+export const extractMetadata = hmax.extractMetadata.bind(hmax);
+export const migrateHashIfOutdated = hmax.migrateHashIfOutdated.bind(hmax);
+export const generateSecret = hmax.generateSecret.bind(hmax);
+export const generatePepper = hmax.generatePepper.bind(hmax);
+export const rotateSecret = hmax.rotateSecret.bind(hmax);
+export const auditHash = hmax.auditHash.bind(hmax);
+export const getInfo = hmax.getInfo.bind(hmax);
+
 
 // Configuration API
 export { default as config } from './config.js';
